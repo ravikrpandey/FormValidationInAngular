@@ -1,0 +1,368 @@
+<div class="reg-tab">
+  <ul>
+    <li class="active"><a href="javascript:void(0);">account</a></li>
+    <li><a href="javascript:void(0);">company</a></li>
+    <li><a href="javascript:void(0);">payment</a></li>
+  </ul>
+</div>
+
+<div class="form-wrapper">
+  <h2 class="text-capt text-left">Account Information</h2>
+
+  <!-- Validating FirstName -->
+
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="registerSubmited()"
+    class="border p-3 rounded-3"
+  >
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="firstname">First Name</label>
+          <div class="input">
+            <input
+              type="text"
+              class="form-control"
+              id="firstname"
+              formControlName="firstname"
+              autocomplete="off"
+            />
+            <div
+              class="form-text text-danger"
+              *ngIf="FirstName.errors?.['required'] && (FirstName.touched || FirstName.dirty)"
+            >
+              First Name is Repuired.
+            </div>
+            <div
+              class="form-text text-danger"
+              *ngIf="FirstName.errors?.['pattern'] && (FirstName.touched || FirstName.dirty)"
+            >
+              First Name is Invalid, [char, number or space are not allowed].
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Validating LastName -->
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="lastname">Last Name</label>
+          <div class="input">
+            <input
+              type="text"
+              class="form-control"
+              id="lastname"
+              formControlName="lastname"
+              autocomplete="off"
+            />
+            <div
+              class="form-text text-danger"
+              *ngIf="LastName.errors?.['required'] && (LastName.touched || LastName.dirty)"
+            >
+              Last Name is Repuired.
+            </div>
+            <div
+              class="form-text text-danger"
+              *ngIf="LastName.errors?.['pattern'] && (LastName.touched || LastName.dirty)"
+            >
+              Last Name is Invalid, [char, number or space are not allowed].
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Validating Email -->
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input">
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              formControlName="email"
+              autocomplete="off"
+            />
+            <div
+              class="form-text text-danger"
+              *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)"
+            >
+              Email is Repuired.
+            </div>
+            <div
+              class="form-text text-danger"
+              *ngIf="Email.errors?.['pattern'] && (Email.touched || Email.dirty)"
+            >
+              Please enter a valid email address.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Validating Phone -->
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <div class="input">
+            <input
+              type="text"
+              class="form-control"
+              id="phone"
+              formControlName="phone"
+              autocomplete="off"
+            />
+            <div
+              class="form-text text-danger"
+              *ngIf="Phone.errors?.['required'] && (Phone.touched || Phone.dirty)"
+            >
+              Phone is Repuired.
+            </div>
+            <div
+              class="form-text text-danger"
+              *ngIf="Phone.errors?.['pattern'] && (Phone.touched || Phone.dirty)"
+            >
+              PhoneNumber is Invalid.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Validating Password -->
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input">
+            <input
+              type="password"
+              class="form-control"
+              id="pwd"
+              formControlName="pwd"
+              autocomplete="off"
+            />
+            <div
+              class="form-text text-danger"
+              *ngIf="PWD.errors?.['required'] && (PWD.touched || PWD.dirty)"
+            >
+              Password is Repuired.
+            </div>
+            <div
+              class="form-text text-danger"
+              *ngIf="PWD.errors?.['pattern'] && (PWD.touched || PWD.dirty)"
+            >
+              Password is Invalid, [Your password must be at least 8 characters
+              long, one number, special char, uppercase & lowercase].
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ConfirmPassword show hide feature -->
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="cpwd">Confirm Password</label>
+          <div class="input pass-input">
+            <button (click)="password()">{{ show ? "Hide" : "Show" }}</button>
+            <input
+              [type]="show ? 'text' : 'password'"
+              class="form-control"
+              id="cpwd"
+              formControlName="cpwd"
+              autocomplete="off"
+            />
+            <div
+              class="form-text text-danger"
+              [ngStyle]="{ display: confirmPass }"
+            >
+              Confirm password is Invalid.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="d-flex align-center flex-end">
+            <button
+              type="submit"
+              [disabled]="registerForm.invalid"
+              class="btn btn-secondary"
+            >
+              submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- ACCOUNT SECTION ENDED -->
+
+<div class="form-wrapper" *ngIf="false">
+  <h2 class="text-capt text-left">Company Information</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">Company name</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">job title</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">address</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">address2</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">country</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">city</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">Region / state</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">zip code</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-wrapper" *ngIf="false">
+  <h2 class="text-capt text-left">payment Information</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">Invoice Frequency</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">Payment Threshold</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group mb-0">
+        <label for="">Payment Method</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">Payable to</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">Payable Type</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">address</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">country</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">city</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">state</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">zip code</label>
+        <div class="input">
+          <input type="text" class="form-control" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <div class="d-flex align-center flex-end">
+          <button type="submit" class="btn btn-secondary">submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
